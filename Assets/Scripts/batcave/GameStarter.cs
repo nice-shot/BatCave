@@ -12,7 +12,7 @@ public class GameStarter : MonoBehaviour {
     }
 
     protected void Update() {
-        if (Input.GetKeyUp(KeyCode.Space) && !Game.instance.HasStarted) {
+        if (Input.GetKeyDown(KeyCode.Space) && !Game.instance.HasStarted) {
             StartGame();
         }
     }
