@@ -1,0 +1,26 @@
+General Grade Distribution:
++15 - Code is compiling.
++15 - Compiling & not raising exceptions/errors.
++10 - Compiling & no logical errors & bugs.
++5 - Compiling & no warnings.
++5 - Consistent coding conventions & readability.
+
+Exercise Specific:
++30 - README and design doc (be sure to include all of the steps we discussed in class).
++20 - Implementation specifics (implementation matches your design, playable and fun/interesting game etc.)
+
+Known Bonuses:
++10 - Restart bonus
+
+Key Points to Notice:
+# Make sure you are testing your game with the game screen set to 4:3.
+# Test your spline interpolation code with the test scene.
+# You are programmers, not mathematicians! Document your code. Especially if it is a complex mathematical algorithms.
+# Try to adjust the game according to the player's performance - this is one of the strong suits of procedural generation.
+
+Tips:
+# Finish the design part before the next lesson so I'll be able to give you feedback on your design before you go into implementing it.
+# Always run the game with the console in view to catch any errors as they happen.
+# Let others play your game and see if they experience what you planned.
+# Define your editor's code formatting policy. In MonoDevelop that is defined in Solution Options > Code Formatting > C# Source Code. Define the policy regarding curly brackets and indentation inside a namespace to match the given code's conventions.
+# Anything special you add to the game (e.g. MUSIC!) will award you with bonus points!
