@@ -15,7 +15,7 @@ public class Game : MonoBehaviour {
 
     public Bat player;
     public Text tapToStartText;
-    public Text tapToRestartText;
+//    public Text tapToRestartText;
 
     public int pointsToKeepBehindPlayer;
     [Tooltip("The x value that the initial generated terrain must pass")]
@@ -135,8 +135,8 @@ public class Game : MonoBehaviour {
         if (OnGameOverEvent != null) {
             OnGameOverEvent();
         }
-        instance.tapToRestartText.gameObject.SetActive(true);
-        DebugUtils.Log("Game ended");
+//        instance.tapToRestartText.gameObject.SetActive(true);
+//        DebugUtils.Log("Game ended");
     }
 
     private void OnTerrainEnteredScreen() {
