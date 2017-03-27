@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//HELLO! :)
+
+using UnityEngine;
 
 namespace BatCave.Spline {
 public class SingleSpline {
