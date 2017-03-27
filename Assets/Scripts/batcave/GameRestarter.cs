@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Infra.Gameplay.UI;
 
@@ -17,7 +18,9 @@ public class GameRestarter : MonoBehaviour {
 
     private void OnGameOver() {
         tapToRestartText.gameObject.SetActive(true);
-        Debug.Log("cool");
+//        Game.instance.StartGame();
+//        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+//        Game.instance.player.ResetBat();
     }
 }
 }
