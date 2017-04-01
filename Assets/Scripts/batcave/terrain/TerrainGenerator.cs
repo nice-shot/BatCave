@@ -2,8 +2,7 @@
 using Infra.Collections;
 
 namespace BatCave.Terrain {
-// Not points but small ranges to create points within. This makes the repeating
-// patterns a bit different from one another
+// Information to create points by
 [System.Serializable]
 public class TerrainPointPrepare {
     // Range for distance to previous point
@@ -27,14 +26,13 @@ public class TerrainPointPrepare {
     public float GetFloorY() {
         return Random.Range(floorMin, floorMax);
     }
-       
 }
-
+    
 // Holds a group of points to create a specific pattern
 [System.Serializable]
 public class TerrainPattern {
     public string name;
-    public TerrainPointPrepare[] points;
+    public TerrainGenerator.TerrainPoint[] points;
     private int currentIndex = 0;
 
     private void ResetPoints() {
@@ -45,7 +43,7 @@ public class TerrainPattern {
         return (currentIndex < points.Length);
     }
 
-    public TerrainPointPrepare GetNextPointPrepare() {
+    public TerrainGenerator.TerrainPoint GetNextPoint() {
         if (!HasMorePoints()) {
             ResetPoints();
         }
@@ -71,6 +69,13 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
 
         public float GetY(bool isCeiling) {
             return isCeiling ? ceilingY : floorY;
+        }
+
+        // Changes the points a bit to avoid repeating patterns
+        public void CreateVariation(float variation = 0.2f) {
+            distanceFromPrevious = Random.Range(distanceFromPrevious - variation, distanceFromPrevious + variation);
+            ceilingY = Random.Range(ceilingY - variation, ceilingY + variation);
+            floorY = Random.Range(floorY - variation, floorY + variation);
         }
     }
 
@@ -151,10 +156,11 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
             Debug.Log("Reached end of pattern - " + currentPattern.name);
         }
 
-        var pointDetails = currentPattern.GetNextPointPrepare();
-        point.distanceFromPrevious = pointDetails.GetDistance();
-        point.ceilingY = pointDetails.GetCeilingY();
-        point.floorY = pointDetails.GetFloorY();
+        var basePoint = currentPattern.GetNextPoint();
+        basePoint.CreateVariation();
+        point.distanceFromPrevious = basePoint.distanceFromPrevious;
+        point.ceilingY = basePoint.ceilingY;
+        point.floorY = basePoint.floorY;
 
         // Set the point at the correct position based on the previous point's
         // position and the distance from it that we just set.
