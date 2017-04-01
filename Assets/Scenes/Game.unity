@@ -399,7 +399,7 @@ Prefab:
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 38.259342
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1108448969c946088e265afa82e34d7, type: 2}
@@ -433,6 +433,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].distanceRange.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010367562184, guid: 30dfd6b3db3f142cba987df5f467fd10, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -464,6 +479,101 @@ Prefab:
     - target: {fileID: 4000010367562184, guid: 30dfd6b3db3f142cba987df5f467fd10, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].name
+      value: WideTunnel
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].distanceMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].distanceMax
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].ceilingMin
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].ceilingMax
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].floorMin
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].floorMax
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[1].distanceMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[1].distanceMax
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[1].ceilingMin
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[1].floorMin
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[1].floorMax
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[1].ceilingMax
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[2].distanceMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[2].distanceMax
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[2].ceilingMin
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[2].ceilingMax
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[2].floorMin
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[2].floorMax
+      value: -1.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30dfd6b3db3f142cba987df5f467fd10, type: 2}
