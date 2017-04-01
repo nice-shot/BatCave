@@ -389,7 +389,7 @@ Prefab:
     - target: {fileID: 224000014291456382, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 38.259342
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
@@ -399,7 +399,7 @@ Prefab:
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 38.259342
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1108448969c946088e265afa82e34d7, type: 2}
@@ -436,6 +436,11 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: patternNameRanking.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
@@ -919,6 +924,16 @@ Prefab:
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[8].ceilingY
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: patternNameRanking.Array.data[0]
+      value: WideTunnel
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: patternNameRanking.Array.data[1]
+      value: SpikeyTunnel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30dfd6b3db3f142cba987df5f467fd10, type: 2}

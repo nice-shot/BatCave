@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Infra.Collections;
+using System.Collections.Generic;
 
 namespace BatCave.Terrain {
 // Information to create points by
@@ -92,14 +93,29 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
     public float startingX;
 
     public TerrainPattern[] terrainPatterns;
+    [Tooltip("Write the pattern names in the order of their difficulty")]
+    public string[] patternNameRanking;
+    public TerrainPattern currentPattern;
+    private Dictionary<int, TerrainPattern> patternRanking = new Dictionary<int, TerrainPattern>();
+    private Dictionary<string, TerrainPattern> patternNames = new Dictionary<string, TerrainPattern>();
+
 
     private readonly ObjectPool<TerrainPoint> terrainPoints = new ObjectPool<TerrainPoint>(5, 5);
-    private TerrainPattern currentPattern;
        
 
     // Sets the current pattern to the first which should be the wide tunnel
     protected void Awake() {
-        currentPattern = terrainPatterns[0];
+        for (int i = 0; i < terrainPatterns.Length; i++) {
+            var pattern = terrainPatterns[i];
+            patternNames[pattern.name] = pattern;
+        }
+
+        for (int i = 0; i < patternNameRanking.Length; i++) {
+            var patternName = patternNameRanking[i];
+            patternRanking[i] = patternNames[patternName];
+        }
+
+        currentPattern = patternRanking[0];
     }
 
     /// <summary>
@@ -155,9 +171,9 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         if (!currentPattern.HasMorePoints()) {
             Debug.Log("Reached end of pattern - " + currentPattern.name);
             if (difficulty == 0) {
-                currentPattern = terrainPatterns[0];
+                currentPattern = patternRanking[0];
             } else {
-                currentPattern = terrainPatterns[1];
+                currentPattern = patternRanking[difficulty];
             }
         }
 

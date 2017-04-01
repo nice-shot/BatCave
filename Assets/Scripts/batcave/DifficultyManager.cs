@@ -16,7 +16,7 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
         if (!Game.instance.HasStarted) return 0;
 
         // EXERCISE: Return difficulty level based on difficulty curve plan.
-        return Random.Range(0, 10);
+        return Random.Range(0, TerrainGenerator.instance.patternNameRanking.Length);
     }
 
     private void OnPlayerPassedPoint(TerrainGenerator.TerrainPoint point) {
