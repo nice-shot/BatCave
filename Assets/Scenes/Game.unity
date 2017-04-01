@@ -446,7 +446,7 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.size
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -598,12 +598,12 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[0].ceilingMin
-      value: 1.1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[0].ceilingMax
-      value: 0.9
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -628,12 +628,12 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[1].ceilingMin
-      value: 1.6
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[1].ceilingMax
-      value: 1.4
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -648,22 +648,22 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[2].distanceMin
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[2].distanceMax
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[2].ceilingMin
-      value: 1.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[2].ceilingMax
-      value: 1.6
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -673,7 +673,7 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[2].floorMax
-      value: -1.6
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -734,6 +734,191 @@ Prefab:
         type: 2}
       propertyPath: terrainPatterns.Array.data[1].points.Array.data[4].floorMax
       value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].ceilingY
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].floorY
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[0].distanceFromPrevious
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[1].ceilingY
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[1].floorY
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[1].distanceFromPrevious
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[2].ceilingY
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[2].floorY
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[0].points.Array.data[2].distanceFromPrevious
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[0].ceilingY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[0].floorY
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[0].distanceFromPrevious
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[1].ceilingY
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[1].floorY
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[1].distanceFromPrevious
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[2].ceilingY
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[2].floorY
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[2].distanceFromPrevious
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[3].distanceFromPrevious
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[3].ceilingY
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[3].floorY
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[4].distanceFromPrevious
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[4].ceilingY
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[4].floorY
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[5].distanceFromPrevious
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[5].ceilingY
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[5].floorY
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[6].distanceFromPrevious
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[6].ceilingY
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[6].floorY
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[7].distanceFromPrevious
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[7].ceilingY
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[7].floorY
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[8].distanceFromPrevious
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[8].floorY
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].points.Array.data[8].ceilingY
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30dfd6b3db3f142cba987df5f467fd10, type: 2}

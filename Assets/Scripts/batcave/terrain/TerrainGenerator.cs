@@ -72,7 +72,7 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         }
 
         // Changes the points a bit to avoid repeating patterns
-        public void CreateVariation(float variation = 0.2f) {
+        public void CreateVariation(float variation = 0.05f) {
             distanceFromPrevious = Random.Range(distanceFromPrevious - variation, distanceFromPrevious + variation);
             ceilingY = Random.Range(ceilingY - variation, ceilingY + variation);
             floorY = Random.Range(floorY - variation, floorY + variation);
@@ -154,6 +154,11 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
 
         if (!currentPattern.HasMorePoints()) {
             Debug.Log("Reached end of pattern - " + currentPattern.name);
+            if (difficulty == 0) {
+                currentPattern = terrainPatterns[0];
+            } else {
+                currentPattern = terrainPatterns[1];
+            }
         }
 
         var basePoint = currentPattern.GetNextPoint();
