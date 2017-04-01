@@ -162,10 +162,11 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         }
 
         var basePoint = currentPattern.GetNextPoint();
-        basePoint.CreateVariation();
+//        basePoint.CreateVariation();
         point.distanceFromPrevious = basePoint.distanceFromPrevious;
         point.ceilingY = basePoint.ceilingY;
         point.floorY = basePoint.floorY;
+        point.CreateVariation();
 
         // Set the point at the correct position based on the previous point's
         // position and the distance from it that we just set.
