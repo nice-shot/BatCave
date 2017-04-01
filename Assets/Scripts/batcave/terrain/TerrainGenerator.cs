@@ -92,6 +92,8 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
     [Tooltip("The X position of the first point")]
     public float startingX;
 
+    public static event System.Action<TerrainPattern> OnTerrainPatternFinishedEvent;
+
     public TerrainPattern[] terrainPatterns;
     [Tooltip("Write the pattern names in the order of their difficulty")]
     public string[] patternNameRanking;
@@ -170,6 +172,11 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
 
         if (!currentPattern.HasMorePoints()) {
             Debug.Log("Reached end of pattern - " + currentPattern.name);
+
+            if (OnTerrainPatternFinishedEvent != null) {
+                OnTerrainPatternFinishedEvent(currentPattern);
+            }
+
             if (difficulty == 0) {
                 currentPattern = patternRanking[0];
             } else {
@@ -178,7 +185,6 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         }
 
         var basePoint = currentPattern.GetNextPoint();
-//        basePoint.CreateVariation();
         point.distanceFromPrevious = basePoint.distanceFromPrevious;
         point.ceilingY = basePoint.ceilingY;
         point.floorY = basePoint.floorY;
