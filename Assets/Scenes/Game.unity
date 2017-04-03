@@ -271,6 +271,11 @@ Prefab:
       propertyPath: tapToRestartText
       value: 
       objectReference: {fileID: 76598634}
+    - target: {fileID: 114000012069818810, guid: 201d81df6af8b4d70b25c463f02ca130,
+        type: 2}
+      propertyPath: minXForGameStart
+      value: 2.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 201d81df6af8b4d70b25c463f02ca130, type: 2}
   m_IsPrefabParent: 0
@@ -384,17 +389,17 @@ Prefab:
     - target: {fileID: 224000014291456382, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 44
+      value: 40.445244
       objectReference: {fileID: 0}
     - target: {fileID: 224000014291456382, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 130
+      value: 125.012566
       objectReference: {fileID: 0}
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
@@ -436,12 +441,12 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: terrainPatterns.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: patternNameRanking.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -462,6 +467,11 @@ Prefab:
         type: 2}
       propertyPath: terrainPatterns.Array.data[3].points.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -1173,7 +1183,7 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: patternNameRanking.Array.data[3]
-      value: SuddenHole
+      value: SuddenHighHole
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -1204,6 +1214,106 @@ Prefab:
         type: 2}
       propertyPath: terrainPatterns.Array.data[3].points.Array.data[6].distanceFromPrevious
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].name
+      value: SuddenHighHole
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[0].ceilingY
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[0].floorY
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[0].distanceFromPrevious
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[1].ceilingY
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[1].floorY
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[1].distanceFromPrevious
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[2].ceilingY
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[2].floorY
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[2].distanceFromPrevious
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[3].ceilingY
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[3].floorY
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[3].distanceFromPrevious
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[4].ceilingY
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[4].floorY
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[4].distanceFromPrevious
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[5].ceilingY
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[5].floorY
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].points.Array.data[5].distanceFromPrevious
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: patternNameRanking.Array.data[4]
+      value: SuddenHole
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30dfd6b3db3f142cba987df5f467fd10, type: 2}
@@ -1764,3 +1874,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tapToRestartText: {fileID: 76598634}
+  tapToStartText: {fileID: 589554799}
