@@ -37,6 +37,8 @@ public class GameRestarter : MonoBehaviour {
         Debug.Log("Reset game position");
         bat.gameObject.transform.position = batOriginalPosition;
         bat.ResetBat();
+        // Remove all terrain chunks
+        Terrain.TerrainRasterizer.instance.terrainPool.ReturnAll();
         Game.instance.GenerateInitialTerrain();
         tapToRestartText.gameObject.SetActive(false);
         tapToStartText.gameObject.SetActive(true);

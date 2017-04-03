@@ -43,6 +43,11 @@ public class TerrainAliveChecker : MonoBehaviour {
         var terrainChunk = collider.GetComponentInParent<TerrainChunk>();
         if (terrainChunk == null) return;
 
+        // Terrain passed from left to right - probably during reset which means it shouldn't destroy it
+        var triggerRightEdge = trigger.bounds.max.x;
+        var terrainRightEdge = terrainChunk.ceiling.RightEdge;
+        if (triggerRightEdge < terrainRightEdge) return;
+
         // Terrain has left the camera area. Disable it to return it to the pool.
         terrainChunk.ReturnSelf();
     }
