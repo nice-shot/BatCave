@@ -36,7 +36,7 @@ public class TerrainPattern {
     public TerrainGenerator.TerrainPoint[] points;
     private int currentIndex = 0;
 
-    private void ResetPoints() {
+    public void ResetPoints() {
         currentIndex = 0;
     }
 
@@ -170,8 +170,9 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         var point = terrainPoints.Borrow();
         point.difficulty = difficulty;
 
-        // Should mark 0 not as easy but as inactive so we won't need this bad hack
-        if (!Game.instance.HasStarted) {
+        // TODO: mark 0 not as easy but as inactive so we won't need this bad hack
+        if (!Game.instance.HasStarted && currentPattern != patternRanking[0]) {
+            currentPattern.ResetPoints();
             currentPattern = patternRanking[0];
         }
 
