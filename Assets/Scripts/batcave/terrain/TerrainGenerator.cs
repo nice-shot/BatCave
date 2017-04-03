@@ -170,6 +170,12 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         var point = terrainPoints.Borrow();
         point.difficulty = difficulty;
 
+        // Should mark 0 not as easy but as inactive so we won't need this bad hack
+        if (!Game.instance.HasStarted) {
+            currentPattern = patternRanking[0];
+        }
+
+
         if (!currentPattern.HasMorePoints()) {
             Debug.Log("Reached end of pattern - " + currentPattern.name);
 

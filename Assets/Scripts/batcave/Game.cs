@@ -58,6 +58,27 @@ public class Game : MonoBehaviour {
         gameObject.SetActive(false);
 
         // Generate initial terrain.
+        GenerateInitialTerrain();
+    }
+
+    protected void OnDestroy() {
+        Bat.OnDied -= OnGameOver;
+        TerrainAliveChecker.OnTerrainEnteredScreen -= OnTerrainEnteredScreen;
+    }
+
+    protected void FixedUpdate() {
+        // Check if the player passed the next point.
+        var point = GetPassedPoint();
+        if (point != null && OnPlayerPassedPointEvent != null) {
+            OnPlayerPassedPointEvent(point);
+        }
+
+        // Update score.
+        _score = Mathf.FloorToInt(player.transform.position.x - zeroScoreX);
+    }
+
+    public void GenerateInitialTerrain() {
+        terrainPoints.Clear();
         TerrainGenerator.TerrainPoint point;
         do {
             point = TerrainGenerator.GetNextPoint(0);
@@ -80,22 +101,6 @@ public class Game : MonoBehaviour {
             DebugUtils.Log("Rasterizing point #" + lastPointIndex);
             nextPointToRasterize = TerrainRasterizer.RasterizeNextChunk(lastPointIndex);
         }
-    }
-
-    protected void OnDestroy() {
-        Bat.OnDied -= OnGameOver;
-        TerrainAliveChecker.OnTerrainEnteredScreen -= OnTerrainEnteredScreen;
-    }
-
-    protected void FixedUpdate() {
-        // Check if the player passed the next point.
-        var point = GetPassedPoint();
-        if (point != null && OnPlayerPassedPointEvent != null) {
-            OnPlayerPassedPointEvent(point);
-        }
-
-        // Update score.
-        _score = Mathf.FloorToInt(player.transform.position.x - zeroScoreX);
     }
 
     public void StartGame() {
@@ -135,6 +140,7 @@ public class Game : MonoBehaviour {
         if (OnGameOverEvent != null) {
             OnGameOverEvent();
         }
+        instance.gameObject.SetActive(false);
 //        instance.tapToRestartText.gameObject.SetActive(true);
 //        DebugUtils.Log("Game ended");
     }

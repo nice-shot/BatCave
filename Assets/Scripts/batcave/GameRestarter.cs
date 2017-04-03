@@ -11,16 +11,46 @@ namespace BatCave {
 public class GameRestarter : MonoBehaviour {
 
     public Text tapToRestartText;
+    public Text tapToStartText;
+    private bool doneReset = false;
+    private Bat bat;
+    private Vector2 batOriginalPosition;
 
     protected void Awake() {
         Game.OnGameOverEvent += OnGameOver;
+        bat = Game.instance.player;
+        batOriginalPosition = bat.gameObject.transform.position;
+        gameObject.SetActive(false);
+    }
+
+    protected void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            if (!doneReset) {
+                ResetParameters();
+            } else {
+                StartGame();
+            }
+        }
+    }
+
+    private void ResetParameters() {
+        bat.gameObject.transform.position = batOriginalPosition;
+        bat.ResetBat();
+        Game.instance.GenerateInitialTerrain();
+        tapToRestartText.gameObject.SetActive(false);
+        tapToStartText.gameObject.SetActive(true);
+        doneReset = true;
+    }
+
+    private void StartGame() {
+        Game.instance.StartGame();
+        gameObject.SetActive(false);
     }
 
     private void OnGameOver() {
+        gameObject.SetActive(true);
+        doneReset = false;
         tapToRestartText.gameObject.SetActive(true);
-//        Game.instance.StartGame();
-//        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-//        Game.instance.player.ResetBat();
     }
 }
 }
