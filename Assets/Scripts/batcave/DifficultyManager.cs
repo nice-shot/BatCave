@@ -34,12 +34,17 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
     };
 
     private static int difficultyCurveIndex = 0;
+    private static DifficultyLevel currentDifficulty;
     private TerrainPattern nextPattern;
     private static Dictionary<DifficultyLevel, int[]> diffToPattern = new Dictionary<DifficultyLevel, int[]>();
 
     public override void Init() {
         Game.OnPlayerPassedPointEvent += OnPlayerPassedPoint;
         TerrainGenerator.OnTerrainPatternFinishedEvent += OnPatternFinished;
+
+        // Should always start at zero but we want the inspector to show current position and difficulty
+        difficultyCurveIndex = 0;
+        currentDifficulty = difficultyCurve[difficultyCurveIndex];
 
         var numPatterns = TerrainGenerator.instance.terrainPatterns.Length;
         // Correspond difficulty level to number of patterns
@@ -71,19 +76,20 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
     public static int GetNextDifficulty() {
         // Always return 0 until the game starts.
         if (!Game.instance.HasStarted) return 0;
-
+            
         // Returns a difficulty settinng in the range of the current difficulty level
-        var currentDifficulty = difficultyCurve[difficultyCurveIndex];
         return Random.Range(diffToPattern[currentDifficulty][0], diffToPattern[currentDifficulty][1]);
     }
 
     private void OnPatternFinished(TerrainPattern pattern) {
-//        Debug.Log("Finished pattern - " + pattern.name);
+        if (!Game.instance.HasStarted) return;
         difficultyCurveIndex += 1;
         // If the player finished the curve it starts all over again
         if (difficultyCurveIndex >= difficultyCurve.Length) {
             difficultyCurveIndex = 0;
         }
+        currentDifficulty = difficultyCurve[difficultyCurveIndex];
+        Debug.Log("Difficulty changed to: " + currentDifficulty);
     }
 
     private void OnPlayerPassedPoint(TerrainGenerator.TerrainPoint point) {
