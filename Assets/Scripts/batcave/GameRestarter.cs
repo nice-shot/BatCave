@@ -34,6 +34,7 @@ public class GameRestarter : MonoBehaviour {
     }
 
     private void ResetParameters() {
+        Debug.Log("Reset game position");
         bat.gameObject.transform.position = batOriginalPosition;
         bat.ResetBat();
         Game.instance.GenerateInitialTerrain();

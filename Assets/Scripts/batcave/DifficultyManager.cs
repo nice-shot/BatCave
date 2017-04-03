@@ -40,6 +40,7 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
 
     public override void Init() {
         Game.OnPlayerPassedPointEvent += OnPlayerPassedPoint;
+        Game.OnGameOverEvent += OnGameOver;
         TerrainGenerator.OnTerrainPatternFinishedEvent += OnPatternFinished;
 
         // Should always start at zero but we want the inspector to show current position and difficulty
@@ -94,6 +95,11 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
 
     private void OnPlayerPassedPoint(TerrainGenerator.TerrainPoint point) {
         // EXERCISE: Process player success level.
+    }
+
+    private void OnGameOver() {
+        // Set index to 0 to restart the curve
+        difficultyCurveIndex = 0;
     }
 }
 }
