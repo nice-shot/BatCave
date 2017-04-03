@@ -12,7 +12,8 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
         easy, medium, hard
     }
 
-    public DifficultyLevel[] difficultyCurve = {
+    // This is the chosen difficulty curve for this game. Start big, relax and then build up to a big climax
+    public static DifficultyLevel[] difficultyCurve = {
         DifficultyLevel.easy, 
         DifficultyLevel.hard,
         DifficultyLevel.easy,
@@ -32,9 +33,9 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
         DifficultyLevel.easy
     };
 
-    private int difficultyCurveIndex = 0;
+    private static int difficultyCurveIndex = 0;
     private TerrainPattern nextPattern;
-    private Dictionary<DifficultyLevel, int[]> diffToPattern;
+    private static Dictionary<DifficultyLevel, int[]> diffToPattern = new Dictionary<DifficultyLevel, int[]>();
 
     public override void Init() {
         Game.OnPlayerPassedPointEvent += OnPlayerPassedPoint;
@@ -43,10 +44,10 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
         var numPatterns = TerrainGenerator.instance.terrainPatterns.Length;
         // Correspond difficulty level to number of patterns
         // So if we have 7 patterns:
-        // * 0-3 will be easy
+        // * 0-2 will be easy
         // * 3-5 will be medium
-        // * 5-7 will be hard
-        diffToPattern[DifficultyLevel.easy] = new int[2] { 0, numPatterns / 3 + 1 };
+        // * 6-7 will be hard
+        diffToPattern[DifficultyLevel.easy] = new int[2] { 0, numPatterns / 3 };
         diffToPattern[DifficultyLevel.hard] = new int[2]
         {
             numPatterns - numPatterns / 3,
@@ -54,22 +55,35 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
         };
         diffToPattern[DifficultyLevel.medium] = new int[2]
         {
-            numPatterns / 3 + 1,
+            numPatterns / 3,
             numPatterns - numPatterns / 3
         };
-        Debug.Log("There are " + TerrainGenerator.instance.terrainPatterns.Length + " patterns");
+        Debug.Log("Created diff to pattern:");
+        foreach (KeyValuePair<DifficultyLevel, int[]> kvp in diffToPattern) {
+            Debug.Log("Level: " + kvp.Key);
+            foreach (int patternNum in kvp.Value) {
+                Debug.Log("Pattern: " + patternNum);
+            }
+            Debug.Log("-------------------------");
+        }
     }
 
     public static int GetNextDifficulty() {
         // Always return 0 until the game starts.
         if (!Game.instance.HasStarted) return 0;
 
-        // EXERCISE: Return difficulty level based on difficulty curve plan.
-        return Random.Range(0, TerrainGenerator.instance.patternNameRanking.Length);
+        // Returns a difficulty settinng in the range of the current difficulty level
+        var currentDifficulty = difficultyCurve[difficultyCurveIndex];
+        return Random.Range(diffToPattern[currentDifficulty][0], diffToPattern[currentDifficulty][1]);
     }
 
     private void OnPatternFinished(TerrainPattern pattern) {
-        Debug.Log("Finished pattern - " + pattern.name);
+//        Debug.Log("Finished pattern - " + pattern.name);
+        difficultyCurveIndex += 1;
+        // If the player finished the curve it starts all over again
+        if (difficultyCurveIndex >= difficultyCurve.Length) {
+            difficultyCurveIndex = 0;
+        }
     }
 
     private void OnPlayerPassedPoint(TerrainGenerator.TerrainPoint point) {
