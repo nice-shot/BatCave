@@ -25,11 +25,19 @@ public class GameRestarter : MonoBehaviour {
 
     protected void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            if (!doneReset) {
-                ResetParameters();
-            } else {
+            if (doneReset) {
                 StartGame();
+            } else {
+                ResetParameters();
             }
+        }
+    }
+
+    private void OnTouchDown(PointerEventData e) {
+        if (doneReset) {
+            StartGame();
+        } else {
+            ResetParameters();
         }
     }
 
@@ -48,10 +56,12 @@ public class GameRestarter : MonoBehaviour {
     private void StartGame() {
         Game.instance.StartGame();
         gameObject.SetActive(false);
+        GameInputCapture.OnTouchDown -= OnTouchDown;
     }
 
     private void OnGameOver() {
         gameObject.SetActive(true);
+        GameInputCapture.OnTouchDown += OnTouchDown;
         doneReset = false;
         tapToRestartText.gameObject.SetActive(true);
     }
