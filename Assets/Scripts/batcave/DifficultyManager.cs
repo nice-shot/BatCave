@@ -58,18 +58,18 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
         // * 1-2 will be easy
         // * 3-5 will be medium
         // * 6-7 will be hard
-        var numPatterns = TerrainGenerator.instance.patternNameRanking.Length;
+        var numPatterns = TerrainGenerator.instance.terrainPatterns.Length;
 
         diffToPattern[DifficultyLevel.easy] = new int[2] { 1, numPatterns / 3 + 1 };
         diffToPattern[DifficultyLevel.hard] = new int[2]
         {
             numPatterns - (numPatterns / 3) + 1,
-            numPatterns
+            numPatterns + 1
         };
         diffToPattern[DifficultyLevel.medium] = new int[2]
         {
             numPatterns / 3 + 1,
-            numPatterns - numPatterns / 3
+            numPatterns - (numPatterns / 3) + 1
         };
     }
 

@@ -9,6 +9,7 @@ namespace BatCave.Terrain {
 public class TerrainPattern {
     public string name;
     public TerrainGenerator.TerrainPoint[] points;
+    public int difficultyScore;
     private int currentIndex = 0;
 
     public void ResetPoints() {
@@ -56,6 +57,14 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         }
     }
 
+    private class PatternNameComparer : System.Collections.IComparer {
+        public int Compare(System.Object a_name,  System.Object b_name) {
+            var a_pattern = TerrainGenerator.instance.GetPatternByName((string)a_name);
+            var b_pattern = TerrainGenerator.instance.GetPatternByName((string)b_name);
+            return a_pattern.difficultyScore.CompareTo(b_pattern.difficultyScore);
+        }
+    }
+
     public float minFloor = -1.6f;
     public float maxCeiling = 1.6f;
     [Tooltip("The minimal gap that could be created.\n" +
@@ -72,34 +81,56 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
 
     [Tooltip("Create the patterns here")]
     public TerrainPattern[] terrainPatterns;
-    [Tooltip("Write the pattern names in the order of their difficulty.\n" +
-        "The initial pattern should be written twice")]
+    [Tooltip("Write the name of the starting pattern")]
+    public string initialPatternName;
+    [Tooltip("The pattern ranking - changes dynamically")]
     public string[] patternNameRanking;
+
     public TerrainPattern currentPattern;
+    private Dictionary<string, TerrainPattern> patternNames = new Dictionary<string, TerrainPattern>();
     private Dictionary<int, TerrainPattern> patternRanking = new Dictionary<int, TerrainPattern>();
     private Dictionary<string, int> patternNameToRank = new Dictionary<string, int>();
 
+    public TerrainPattern GetPatternByName(string name) {
+        return patternNames[name];
+    }
+
+    public TerrainPattern GetPatternByRank(int rank) {
+        if (rank == 0) {
+            return GetPatternByName(initialPatternName);
+        }
+        return GetPatternByName(patternNameRanking[rank - 1]);
+    }
 
     private readonly ObjectPool<TerrainPoint> terrainPoints = new ObjectPool<TerrainPoint>(5, 5);
        
 
     // Sets the current pattern to the first which should be the wide tunnel
     protected void Awake() {
-        // Helps convert name to rank
-        var patternNames = new Dictionary<string, TerrainPattern>();
-
+        // Initialize the patternNames dict to be used later
         for (int i = 0; i < terrainPatterns.Length; i++) {
             var pattern = terrainPatterns[i];
             patternNames[pattern.name] = pattern;
         }
 
-        for (int i = 0; i < patternNameRanking.Length; i++) {
-            var patternName = patternNameRanking[i];
-            patternRanking[i] = patternNames[patternName];
-            patternNameToRank[patternName] = i;
+        patternNameRanking = new string[terrainPatterns.Length];
+        for (int i = 0; i < terrainPatterns.Length; i++) {
+            patternNameRanking[i] = terrainPatterns[i].name;
         }
+        SetPatternRanks();
 
-        currentPattern = patternRanking[0];
+//        for (int i = 0; i < patternNameRanking.Length; i++) {
+//            var patternName = patternNameRanking[i];
+//            patternRanking[i] = patternNames[patternName];
+//            patternNameToRank[patternName] = i;
+//        }
+
+        currentPattern = GetPatternByName(initialPatternName);
+    }
+
+    private void SetPatternRanks() {
+        System.Collections.IComparer comparer = new PatternNameComparer();
+        System.Array.Sort(patternNameRanking, comparer);
     }
 
     /// <summary>
@@ -116,9 +147,9 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         point.difficulty = difficulty;
 
         // This means we've got a restart command 
-        if (difficulty == 0 && currentPattern != patternRanking[0]) {
+        if (difficulty == 0 && currentPattern.name != initialPatternName) {
             currentPattern.ResetPoints();
-            currentPattern = patternRanking[0];
+            currentPattern = GetPatternByName(initialPatternName);
         }
 
 
@@ -129,7 +160,7 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
                 OnTerrainPatternFinishedEvent(currentPattern);
             }
 
-            currentPattern = patternRanking[difficulty];
+            currentPattern = GetPatternByRank(difficulty);
             Debug.Log("Starting new pattern - " + currentPattern.name);
         }
 
@@ -156,25 +187,25 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
     /// Moves the given pattern index higher in the difficulty chain
     /// </summary>
     public void ChangePatternDifficulty(string patternName) {
-        int patternIndex = patternNameToRank[patternName];
-
-        // Can't level up the last pattern
-        // Won't level up pattern 0 since it's supposed to be the wide tunnel in the start of the game
-        if (patternIndex >= terrainPatterns.Length - 1 || patternIndex <= 0) {
-            return;
-        }
-        var patternToLevelUp = patternRanking[patternIndex];
-        var patternToLevelDown = patternRanking[patternIndex + 1];
-        Debug.Log("Leveling up pattern: " + patternToLevelUp.name);
-        patternNameToRank[patternToLevelUp.name]++;
-        patternRanking[patternIndex + 1] = patternToLevelUp;
-        // Used for the inspector
-        patternNameRanking[patternIndex + 1] = patternToLevelUp.name;
-        Debug.Log("Leveling down pattern: " + patternToLevelDown.name);
-        patternNameToRank[patternToLevelDown.name]--;
-        patternRanking[patternIndex] = patternToLevelDown;
-        patternNameRanking[patternIndex] = patternToLevelDown.name;
-       
+//        int patternIndex = patternNameToRank[patternName];
+//
+//        // Can't level up the last pattern
+//        // Won't level up pattern 0 since it's supposed to be the wide tunnel in the start of the game
+//        if (patternIndex >= terrainPatterns.Length - 1 || patternIndex <= 0) {
+//            return;
+//        }
+//        var patternToLevelUp = patternRanking[patternIndex];
+//        var patternToLevelDown = patternRanking[patternIndex + 1];
+//        Debug.Log("Leveling up pattern: " + patternToLevelUp.name);
+//        patternNameToRank[patternToLevelUp.name]++;
+//        patternRanking[patternIndex + 1] = patternToLevelUp;
+//        // Used for the inspector
+//        patternNameRanking[patternIndex + 1] = patternToLevelUp.name;
+//        Debug.Log("Leveling down pattern: " + patternToLevelDown.name);
+//        patternNameToRank[patternToLevelDown.name]--;
+//        patternRanking[patternIndex] = patternToLevelDown;
+//        patternNameRanking[patternIndex] = patternToLevelDown.name;
+//       
     }
 }
 }
