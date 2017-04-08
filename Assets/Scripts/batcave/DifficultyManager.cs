@@ -98,8 +98,12 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
     private void OnGameOver() {
         // Set index to 0 to restart the curve
         difficultyCurveIndex = 0;
+
+        // Change the current pattern's difficulty level and update the pattern list
         if (Game.instance.isActiveAndEnabled) {
-            TerrainGenerator.instance.ChangePatternDifficulty(currentPlayerPatternName);
+            var dyingPattern = TerrainGenerator.instance.GetPatternByName(currentPlayerPatternName);
+            dyingPattern.difficultyScore++;
+            TerrainGenerator.instance.SetPatternRanks();
         }
     }
 }

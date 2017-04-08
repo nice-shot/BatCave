@@ -399,7 +399,7 @@ Prefab:
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 125.012566
+      value: 121.52967
       objectReference: {fileID: 0}
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
@@ -446,7 +446,7 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: patternNameRanking.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -1319,6 +1319,31 @@ Prefab:
         type: 2}
       propertyPath: patternNameRanking.Array.data[5]
       value: SuddenHole
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[1].difficultyScore
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[2].difficultyScore
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[4].difficultyScore
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: terrainPatterns.Array.data[3].difficultyScore
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: initialPatternName
+      value: WideTunnel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30dfd6b3db3f142cba987df5f467fd10, type: 2}

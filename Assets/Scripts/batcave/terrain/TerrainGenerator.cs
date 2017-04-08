@@ -128,7 +128,7 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         currentPattern = GetPatternByName(initialPatternName);
     }
 
-    private void SetPatternRanks() {
+    public void SetPatternRanks() {
         System.Collections.IComparer comparer = new PatternNameComparer();
         System.Array.Sort(patternNameRanking, comparer);
     }
@@ -181,31 +181,6 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         }
 
         return point;
-    }
-
-    /// <summary>
-    /// Moves the given pattern index higher in the difficulty chain
-    /// </summary>
-    public void ChangePatternDifficulty(string patternName) {
-//        int patternIndex = patternNameToRank[patternName];
-//
-//        // Can't level up the last pattern
-//        // Won't level up pattern 0 since it's supposed to be the wide tunnel in the start of the game
-//        if (patternIndex >= terrainPatterns.Length - 1 || patternIndex <= 0) {
-//            return;
-//        }
-//        var patternToLevelUp = patternRanking[patternIndex];
-//        var patternToLevelDown = patternRanking[patternIndex + 1];
-//        Debug.Log("Leveling up pattern: " + patternToLevelUp.name);
-//        patternNameToRank[patternToLevelUp.name]++;
-//        patternRanking[patternIndex + 1] = patternToLevelUp;
-//        // Used for the inspector
-//        patternNameRanking[patternIndex + 1] = patternToLevelUp.name;
-//        Debug.Log("Leveling down pattern: " + patternToLevelDown.name);
-//        patternNameToRank[patternToLevelDown.name]--;
-//        patternRanking[patternIndex] = patternToLevelDown;
-//        patternNameRanking[patternIndex] = patternToLevelDown.name;
-//       
-    }
+    }         
 }
 }
