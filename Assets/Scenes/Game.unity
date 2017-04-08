@@ -389,7 +389,7 @@ Prefab:
     - target: {fileID: 224000014291456382, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 40.445244
+      value: 40.50989
       objectReference: {fileID: 0}
     - target: {fileID: 224000014291456382, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
@@ -446,7 +446,7 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: patternNameRanking.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -953,7 +953,7 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: patternNameRanking.Array.data[1]
-      value: SpikeyTunnel
+      value: WideTunnel
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -1098,7 +1098,7 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: patternNameRanking.Array.data[2]
-      value: ZigZag
+      value: SpikeyTunnel
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -1183,7 +1183,7 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: patternNameRanking.Array.data[3]
-      value: SuddenHighHole
+      value: ZigZag
       objectReference: {fileID: 0}
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
@@ -1313,6 +1313,11 @@ Prefab:
     - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
         type: 2}
       propertyPath: patternNameRanking.Array.data[4]
+      value: SuddenHighHole
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011675106850, guid: 30dfd6b3db3f142cba987df5f467fd10,
+        type: 2}
+      propertyPath: patternNameRanking.Array.data[5]
       value: SuddenHole
       objectReference: {fileID: 0}
     m_RemovedComponents: []

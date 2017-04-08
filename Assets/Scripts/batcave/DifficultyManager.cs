@@ -34,44 +34,43 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
     };
 
     private static int difficultyCurveIndex = 0;
-    private static DifficultyLevel currentDifficulty;
+    private int currentPlayerPattern = 0;
     private TerrainPattern nextPattern;
     private static Dictionary<DifficultyLevel, int[]> diffToPattern = new Dictionary<DifficultyLevel, int[]>();
+
+    private static DifficultyLevel currentDifficulty {
+        get {
+            return difficultyCurve[difficultyCurveIndex];
+        }
+    }
+
 
     public override void Init() {
         Game.OnPlayerPassedPointEvent += OnPlayerPassedPoint;
         Game.OnGameOverEvent += OnGameOver;
         TerrainGenerator.OnTerrainPatternFinishedEvent += OnPatternFinished;
 
-        // Should always start at zero but we want the inspector to show current position and difficulty
         difficultyCurveIndex = 0;
-        currentDifficulty = difficultyCurve[difficultyCurveIndex];
 
-        var numPatterns = TerrainGenerator.instance.terrainPatterns.Length;
         // Correspond difficulty level to number of patterns
         // So if we have 7 patterns:
-        // * 0-2 will be easy
+        // * 0 should be the wide pattern to be used before the game starts
+        // * 1-2 will be easy
         // * 3-5 will be medium
         // * 6-7 will be hard
-        diffToPattern[DifficultyLevel.easy] = new int[2] { 0, numPatterns / 3 };
+        var numPatterns = TerrainGenerator.instance.terrainPatterns.Length;
+
+        diffToPattern[DifficultyLevel.easy] = new int[2] { 1, numPatterns / 3 };
         diffToPattern[DifficultyLevel.hard] = new int[2]
         {
-            numPatterns - numPatterns / 3,
+            numPatterns - (numPatterns / 3) + 1,
             numPatterns
         };
         diffToPattern[DifficultyLevel.medium] = new int[2]
         {
-            numPatterns / 3,
+            numPatterns / 3 + 1,
             numPatterns - numPatterns / 3
         };
-        Debug.Log("Created diff to pattern:");
-        foreach (KeyValuePair<DifficultyLevel, int[]> kvp in diffToPattern) {
-            Debug.Log("Level: " + kvp.Key);
-            foreach (int patternNum in kvp.Value) {
-                Debug.Log("Pattern: " + patternNum);
-            }
-            Debug.Log("-------------------------");
-        }
     }
 
     public static int GetNextDifficulty() {
@@ -89,12 +88,11 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
         if (difficultyCurveIndex >= difficultyCurve.Length) {
             difficultyCurveIndex = 0;
         }
-        currentDifficulty = difficultyCurve[difficultyCurveIndex];
         Debug.Log("Difficulty changed to: " + currentDifficulty);
     }
 
     private void OnPlayerPassedPoint(TerrainGenerator.TerrainPoint point) {
-        // EXERCISE: Process player success level.
+        currentPlayerPattern = point.difficulty;
     }
 
     private void OnGameOver() {
