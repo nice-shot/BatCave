@@ -57,14 +57,6 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         }
     }
 
-    private class PatternNameComparer : System.Collections.IComparer {
-        public int Compare(System.Object a_name,  System.Object b_name) {
-            var a_pattern = TerrainGenerator.instance.GetPatternByName((string)a_name);
-            var b_pattern = TerrainGenerator.instance.GetPatternByName((string)b_name);
-            return a_pattern.difficultyScore.CompareTo(b_pattern.difficultyScore);
-        }
-    }
-
     public float minFloor = -1.6f;
     public float maxCeiling = 1.6f;
     [Tooltip("The minimal gap that could be created.\n" +
@@ -88,8 +80,6 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
 
     public TerrainPattern currentPattern;
     private Dictionary<string, TerrainPattern> patternNames = new Dictionary<string, TerrainPattern>();
-    private Dictionary<int, TerrainPattern> patternRanking = new Dictionary<int, TerrainPattern>();
-    private Dictionary<string, int> patternNameToRank = new Dictionary<string, int>();
 
     public TerrainPattern GetPatternByName(string name) {
         return patternNames[name];
@@ -103,7 +93,15 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
     }
 
     private readonly ObjectPool<TerrainPoint> terrainPoints = new ObjectPool<TerrainPoint>(5, 5);
-       
+
+    private class PatternNameComparer : System.Collections.IComparer {
+        public int Compare(System.Object a_name,  System.Object b_name) {
+            var a_pattern = TerrainGenerator.instance.GetPatternByName((string)a_name);
+            var b_pattern = TerrainGenerator.instance.GetPatternByName((string)b_name);
+            return a_pattern.difficultyScore.CompareTo(b_pattern.difficultyScore);
+        }
+    }
+    private PatternNameComparer nameComparer = new PatternNameComparer();
 
     // Sets the current pattern to the first which should be the wide tunnel
     protected void Awake() {
@@ -119,18 +117,15 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         }
         SetPatternRanks();
 
-//        for (int i = 0; i < patternNameRanking.Length; i++) {
-//            var patternName = patternNameRanking[i];
-//            patternRanking[i] = patternNames[patternName];
-//            patternNameToRank[patternName] = i;
-//        }
-
         currentPattern = GetPatternByName(initialPatternName);
     }
 
+
+    /// <summary>
+    /// Orders the pattern ranks based on the their difficultyScore
+    /// </summary>
     public void SetPatternRanks() {
-        System.Collections.IComparer comparer = new PatternNameComparer();
-        System.Array.Sort(patternNameRanking, comparer);
+        System.Array.Sort(patternNameRanking, nameComparer);
     }
 
     /// <summary>
