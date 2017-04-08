@@ -35,6 +35,7 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         public float x;
         public float ceilingY;
         public float floorY;
+        public string patternName;
         [Tooltip("Distance from previous point.\n" +
             "Determines the chunk size from the previous point to this one.")]
         public float distanceFromPrevious;
@@ -69,12 +70,14 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
 
     public static event System.Action<TerrainPattern> OnTerrainPatternFinishedEvent;
 
+    [Tooltip("Create the patterns here")]
     public TerrainPattern[] terrainPatterns;
-    [Tooltip("Write the pattern names in the order of their difficulty")]
+    [Tooltip("Write the pattern names in the order of their difficulty.\n" +
+        "The initial pattern should be written twice")]
     public string[] patternNameRanking;
     public TerrainPattern currentPattern;
     private Dictionary<int, TerrainPattern> patternRanking = new Dictionary<int, TerrainPattern>();
-    private Dictionary<string, TerrainPattern> patternNames = new Dictionary<string, TerrainPattern>();
+    private Dictionary<string, int> patternNameToRank = new Dictionary<string, int>();
 
 
     private readonly ObjectPool<TerrainPoint> terrainPoints = new ObjectPool<TerrainPoint>(5, 5);
@@ -82,6 +85,9 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
 
     // Sets the current pattern to the first which should be the wide tunnel
     protected void Awake() {
+        // Helps convert name to rank
+        var patternNames = new Dictionary<string, TerrainPattern>();
+
         for (int i = 0; i < terrainPatterns.Length; i++) {
             var pattern = terrainPatterns[i];
             patternNames[pattern.name] = pattern;
@@ -90,6 +96,7 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         for (int i = 0; i < patternNameRanking.Length; i++) {
             var patternName = patternNameRanking[i];
             patternRanking[i] = patternNames[patternName];
+            patternNameToRank[patternName] = i;
         }
 
         currentPattern = patternRanking[0];
@@ -130,6 +137,7 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         point.distanceFromPrevious = basePoint.distanceFromPrevious;
         point.ceilingY = basePoint.ceilingY;
         point.floorY = basePoint.floorY;
+        point.patternName = currentPattern.name;
         point.CreateVariation();
 
         // Set the point at the correct position based on the previous point's
@@ -142,6 +150,31 @@ public class TerrainGenerator : MonoSingleton<TerrainGenerator> {
         }
 
         return point;
+    }
+
+    /// <summary>
+    /// Moves the given pattern index higher in the difficulty chain
+    /// </summary>
+    public void ChangePatternDifficulty(string patternName) {
+        int patternIndex = patternNameToRank[patternName];
+
+        // Can't level up the last pattern
+        // Won't level up pattern 0 since it's supposed to be the wide tunnel in the start of the game
+        if (patternIndex >= terrainPatterns.Length - 1 || patternIndex <= 0) {
+            return;
+        }
+        var patternToLevelUp = patternRanking[patternIndex];
+        var patternToLevelDown = patternRanking[patternIndex + 1];
+        Debug.Log("Leveling up pattern: " + patternToLevelUp.name);
+        patternNameToRank[patternToLevelUp.name]++;
+        patternRanking[patternIndex + 1] = patternToLevelUp;
+        // Used for the inspector
+        patternNameRanking[patternIndex + 1] = patternToLevelUp.name;
+        Debug.Log("Leveling down pattern: " + patternToLevelDown.name);
+        patternNameToRank[patternToLevelDown.name]--;
+        patternRanking[patternIndex] = patternToLevelDown;
+        patternNameRanking[patternIndex] = patternToLevelDown.name;
+       
     }
 }
 }

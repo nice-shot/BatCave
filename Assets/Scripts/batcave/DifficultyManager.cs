@@ -34,7 +34,7 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
     };
 
     private static int difficultyCurveIndex = 0;
-    private int currentPlayerPattern = 0;
+    private string currentPlayerPatternName;
     private TerrainPattern nextPattern;
     private static Dictionary<DifficultyLevel, int[]> diffToPattern = new Dictionary<DifficultyLevel, int[]>();
 
@@ -58,7 +58,7 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
         // * 1-2 will be easy
         // * 3-5 will be medium
         // * 6-7 will be hard
-        var numPatterns = TerrainGenerator.instance.terrainPatterns.Length;
+        var numPatterns = TerrainGenerator.instance.patternNameRanking.Length;
 
         diffToPattern[DifficultyLevel.easy] = new int[2] { 1, numPatterns / 3 };
         diffToPattern[DifficultyLevel.hard] = new int[2]
@@ -92,12 +92,13 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
     }
 
     private void OnPlayerPassedPoint(TerrainGenerator.TerrainPoint point) {
-        currentPlayerPattern = point.difficulty;
+        currentPlayerPatternName = point.patternName;
     }
 
     private void OnGameOver() {
         // Set index to 0 to restart the curve
         difficultyCurveIndex = 0;
+        TerrainGenerator.instance.ChangePatternDifficulty(currentPlayerPatternName);
     }
 }
 }
