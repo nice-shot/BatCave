@@ -60,7 +60,7 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
         // * 6-7 will be hard
         var numPatterns = TerrainGenerator.instance.patternNameRanking.Length;
 
-        diffToPattern[DifficultyLevel.easy] = new int[2] { 1, numPatterns / 3 };
+        diffToPattern[DifficultyLevel.easy] = new int[2] { 1, numPatterns / 3 + 1 };
         diffToPattern[DifficultyLevel.hard] = new int[2]
         {
             numPatterns - (numPatterns / 3) + 1,
@@ -98,7 +98,9 @@ public class DifficultyManager : MonoSingleton<DifficultyManager> {
     private void OnGameOver() {
         // Set index to 0 to restart the curve
         difficultyCurveIndex = 0;
-        TerrainGenerator.instance.ChangePatternDifficulty(currentPlayerPatternName);
+        if (Game.instance.isActiveAndEnabled) {
+            TerrainGenerator.instance.ChangePatternDifficulty(currentPlayerPatternName);
+        }
     }
 }
 }

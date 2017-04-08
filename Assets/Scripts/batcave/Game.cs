@@ -141,8 +141,6 @@ public class Game : MonoBehaviour {
             OnGameOverEvent();
         }
         instance.gameObject.SetActive(false);
-//        instance.tapToRestartText.gameObject.SetActive(true);
-//        DebugUtils.Log("Game ended");
     }
 
     private void OnTerrainEnteredScreen() {
