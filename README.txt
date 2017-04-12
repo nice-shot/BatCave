@@ -1,10 +1,9 @@
 Submitted by:
-<student name> <id>
-<student name> <id>
+Nadav Sheffer 203653894
 
 Link to Game Design Doc:
-<link to Google Doc>
+https://docs.google.com/document/d/18IzLJaOpuKCrNB8mKVM3sziFK1olKl05zxHqiz1E_9E/edit
 
-Code credit:
-We used <name>'s module for <description>.
-Attribution in source files.
+Notes:
+Since my partner quit, I've only implemented the difficulty curve and not the
+spline algorythm.
